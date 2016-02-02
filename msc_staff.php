@@ -24,7 +24,6 @@ function cwillard_msc_staff_shortcodes() {
         add_shortcode( 'staff_block', 'staff_setup');
         add_shortcode( 'staff_section', 'staff_section');
 	add_shortcode( 'staff', 'format_staff');
-        
 	
 	}
 	
@@ -39,12 +38,12 @@ function format_staff($params, $content = null) {
     $link       = (key_exists('link', $params)) ? $params['link'] : SITE_URL . $_SERVER['REQUEST_URI'];
     $content    = ($content) ? $content : $defaultPic;
     
-        ?>
-        <div style="margin: 6px; float: left;"><a href="<?php echo $link; ?>">
-            <img class="alignnone" src="<?php echo $content; ?>" alt="" width="132" height="144" />
-            <strong><?php echo $position; ?></strong><br class="clear" /><?php echo $name?></a>
-        </div>
-        <?php    
+	?>
+	<div style="margin: 6px; float: left;"><a href="<?php echo $link; ?>">
+	    <img class="alignnone" src="<?php echo $content; ?>" alt="" width="132" height="144" />
+	    <strong><?php echo $position; ?></strong><br class="clear" /><?php echo $name?></a>
+	</div>
+	<?php    
     
 }
 
@@ -77,6 +76,5 @@ function staff_setup($params, $conetnt) {
     <?php
     
 }
-
 
 ?>
