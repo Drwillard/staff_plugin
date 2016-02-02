@@ -13,6 +13,10 @@ Domain Path: /languages
 Text Domain: my-toolset
 */
 
+define ('SITE_URL', "http://mscwired.org");
+define ('LINK_TITLE', 'Morning Star Staff');
+define ('DEFUALT_IMAGE', "/Small_staffsmiley1.png");
+
 add_action('init', 'cwillard_msc_staff_shortcodes');
 
 function cwillard_msc_staff_shortcodes() {
@@ -28,11 +32,11 @@ function format_staff($params, $content = null) {
     
     $uploads    = wp_upload_dir();
     $imgPath    = $uploads['baseurl'];
-    $defaultPic = "<img src='" . $imgPath . "/Small_staffsmiley1.png' />";
+    $defaultPic = "<img src='" . $imgPath . DEFUALT_IMAGE . "' />";
     
     $name       = (key_exists('name', $params)) ? $params['name'] : "Coming soon";
-    $position   = (key_exists('title', $params)) ? $params['title'] : "MSC Staff!";
-    $link       = (key_exists('link', $params)) ? $params['link'] : "http://mscwired.org" . $_SERVER['REQUEST_URI'];
+    $position   = (key_exists('title', $params)) ? $params['title'] : LINK_TITLE;
+    $link       = (key_exists('link', $params)) ? $params['link'] : SITE_URL . $_SERVER['REQUEST_URI'];
     $content    = ($content) ? $content : $defaultPic;
     
         ?>
@@ -46,7 +50,7 @@ function format_staff($params, $content = null) {
 
 function staff_section ($params, $content) {
     
-    $title      = (key_exists('title', $params)) ? $params['title'] : "Morning Star Staff";    
+    $title      = (key_exists('title', $params)) ? $params['title'] : LINK_TITLE;    
     return '<div class="container_staff">' . "<h4>". $title ."</h4>". do_shortcode($content) . '</div><div class="break_staff"></div>';
 
 }
