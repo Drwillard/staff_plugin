@@ -19,16 +19,13 @@ define ('DEFUALT_IMAGE', "/Small_staffsmiley1.png");
 
 add_action('init', 'cwillard_msc_staff_shortcodes');
 
-function cwillard_msc_staff_shortcodes() {
-	
+function cwillard_msc_staff_shortcodes() {	
         add_shortcode( 'staff_block', 'staff_setup');
         add_shortcode( 'staff_section', 'staff_section');
 	add_shortcode( 'staff', 'format_staff');
-	
-	}
+}
 	
 function format_staff($params, $content = null) {
-    
     $uploads    = wp_upload_dir();
     $imgPath    = $uploads['baseurl'];
     $defaultPic = "<img src='" . $imgPath . DEFUALT_IMAGE . "' />";
@@ -48,10 +45,8 @@ function format_staff($params, $content = null) {
 }
 
 function staff_section ($params, $content) {
-    
     $title      = (key_exists('title', $params)) ? $params['title'] : LINK_TITLE;    
     return '<div class="container_staff">' . "<h4>". $title ."</h4>". do_shortcode($content) . '</div><div class="break_staff"></div>';
-
 }
 
 function staff_setup($params, $conetnt) {
